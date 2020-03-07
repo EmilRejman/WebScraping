@@ -17,8 +17,6 @@ made with python 3.7
 
 *Data could also be gatherd with e.g. selenium but its not needed in this simple HTML.*
 
-*tasks could also be done using pandas and other libraries.*
-
 *Task 4 was done with least memory expensive pattern, we could use distance_matrix for faster calculation, but more memory.*
 
 ###### coverage:
