@@ -31,4 +31,3 @@ test_ex2_class.py                                           187      1    99%
 ------------------------------------------------------------------------------
 TOTAL                                                       316      1    99%
 ```
-100% may be overkill, but I wanted to make it clean :)
