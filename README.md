@@ -9,7 +9,7 @@ made with python 3.7
 
 
 ###### additional info
-*Run ex2.py to get results*
+*Run "ex2.py" to get results, "test_ex2_class.py" to test the class.*
 
 *With this version we can add users and posts with urls of the same structures without repetitions (automatic removal of duplicates). It still can be optimized for bigger amounts of data.*
 
