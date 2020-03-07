@@ -1,9 +1,9 @@
-##web srapping for OpenX!
+## web srapping for OpenX!
 files required to run and test excersise 2 for internship
 
 made with python 3.7 
 
-#####running the app:
+##### running the app:
 * Create and activate a virtual environment or work on your main one
 * Run ``` pip install -r requirements.txt```
 
