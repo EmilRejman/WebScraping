@@ -9,6 +9,8 @@ made with python 3.7
 
 
 ###### additional info
+*Run ex2.py to get results*
+
 *With this version we can add users and posts with urls of the same structures without repetitions (automatic removal of duplicates). It still can be optimized for bigger amounts of data.*
 
 *Testing done with unit tests.*
