@@ -29,7 +29,7 @@ class TestUserPostParser(unittest.TestCase):
         self.sample_user_no_posts["address"]["geo"]["lat"] = '-37.3159'
         self.sample_user_no_posts["address"]["geo"]["lng"] = '81.1496'
         del self.sample_user_no_posts["posts"]
-        with patch('ex2_class.requests.get') as mocked_get:
+        with patch('ex2_class.requests.get') as mocked_get:  # patch used with context menager
             mocked_get.return_value.status_code = 200
             mocked_get.return_value.text = """[
   {
@@ -59,12 +59,13 @@ class TestUserPostParser(unittest.TestCase):
             datalist = self.no_urls_class.get_data_from_url('test.url')
             self.assertEqual(datalist, [self.sample_user_no_posts])
 
-    def test_get_data_from_url_status_code_not_200(self):
+    @patch('ex2_class.requests')  # patch used with decorator
+    def test_get_data_from_url_status_code_not_200(self, mocked_get):
         """ check reposnse when incorrect status_code """
-        with patch('ex2_class.requests.get') as mocked_get:
-            mocked_get.return_value.status_code = 201
-            datalist = self.no_urls_class.get_data_from_url('test.url')
-            self.assertEqual(datalist, [])
+        mocked_get.get.return_value.status_code = 201
+        datalist = self.no_urls_class.get_data_from_url('test.url')
+        self.assertEqual(datalist, [])
+
 
     def test_get_data_from_url_timeout(self):
         """ check reposnse except timeout """
