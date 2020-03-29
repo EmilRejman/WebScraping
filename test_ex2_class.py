@@ -1,6 +1,5 @@
 import unittest
 from unittest.mock import patch
-from ex2_class import UserPostParser
 import ex2_class
 from benedict import benedict
 import copy
@@ -9,7 +8,7 @@ import copy
 class TestUserPostParser(unittest.TestCase):
 
     def setUp(self):
-        self.no_urls_class = UserPostParser()
+        self.no_urls_class = ex2_class.UserPostParser()
 
         self.sample_post = dict(userId=1, id=1,
                                 title="sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
