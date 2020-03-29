@@ -1,5 +1,5 @@
-## web srapping for OpenX!
-files required to run and test excersise 2 for internship
+## web srapping
+Simple web scrapping project, URL has data in JSON format inside body tag. Get data and parse it from 2 URLS. All code is unittested, integration tests under creation. Testing with pytest module under creation.
 
 made with python 3.7 
 
