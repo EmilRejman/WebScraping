@@ -14,7 +14,7 @@ The data we want to gather is table of dicts.
 
 # task 1 : merge data
 
-class UserPostParser:
+class UserPostParser():
 
     def __init__(self, user_url=None, posts_url=None):
         self.user_url = user_url  # remember the urls for probable future operations
@@ -22,7 +22,7 @@ class UserPostParser:
         self.users = []
 
     @staticmethod
-    def get_data_from_url(url):
+    def get_data_from_url(url: str) -> list:
         """ gets data from URL, part it with BeautifulSoup
         and change it to python datatype"""
 
@@ -44,7 +44,7 @@ class UserPostParser:
             print(f'bad response status code, status code: {response.status_code}')
             return []
 
-    def correct_geo_values(self):
+    def correct_geo_values(self) -> None:
         """ converts geo values from string to float """
         for user in self.users:
             if 'address.geo.lat' and 'address.geo.lng' in user:
@@ -54,7 +54,7 @@ class UserPostParser:
                 except ValueError:
                     print("Not a float")
 
-    def parse_users_posts(self, posts=None):
+    def parse_users_posts(self, posts: list=None) -> bool:
         """ connects posts to related users """
         if (self.users != []) and (posts != []) and (posts is not None):
             for user in self.users:  # add posts to each user
@@ -63,16 +63,16 @@ class UserPostParser:
             return True
         else:
             print(f'users or posts data empty, cant do parsing')
-            return None
+            return False
 
-    def number_of_posts_of_users(self):
+    def number_of_posts_of_users(self) -> list:
         """ returns list of string of format '<username> napisał(a) <count_posts>'
         for each user in list      """
+        table_of_strings = []
+
         if len(self.users) == 0:
             print('no users, cant get number of posts')
-            return
-
-        table_of_strings = []
+            return table_of_strings
 
         for user in self.users:
             if 'posts' not in user or user['posts'] == [] or user['posts'] is None:
@@ -83,20 +83,22 @@ class UserPostParser:
 
         return table_of_strings
 
-    def get_not_unique_title_list(self):
+    def get_not_unique_title_list(self) -> list:
         """ returns repeated titles of posts """
-        if len(self.users) == 0:
-            print('data is not valid, cant get not uniqe title list\n')
-            return
 
         post_list = []
+
+        if len(self.users) == 0:
+            print('data is not valid, cant get not uniqe title list\n')
+            return post_list
+
         [post_list.extend(user['posts']) for user in self.users]
         title_list = [post['title'] for post in post_list]
         notUniqueTitleList = [notUniqueTitle for (notUniqueTitle, v) in Counter(title_list).items() if v > 1]
         print(f"lista nieunikalnych tytułów postów: {notUniqueTitleList}")
         return notUniqueTitleList
 
-    def find_closest_user(self, user_distance_to):
+    def find_closest_user(self, user_distance_to: dict) -> dict:
         """ finds closests user from base to one placed as argument and returns closest user to this one"""
         if len(self.users) == 0:
             print('no users on list, cant find closest user')
@@ -112,12 +114,12 @@ class UserPostParser:
         print(f"najbliższym sąsiadem {user_distance_to['username']} jest {self.users[int(index[0])]['username']} ")
         return self.users[int(index[0])]
 
-    def add_users(self, url=None):
+    def add_users(self, url: str=None) -> int:
         """ extends users with users downloaded from url """
         if url is None:
             if self.user_url is None:
                 print('nie podano ścieżki użytkowników')
-                return
+                return 0
             else:
                 self.users.extend(self.get_data_from_url(self.user_url))
                 self.remove_repeated_users()
@@ -135,12 +137,12 @@ class UserPostParser:
             self.correct_geo_values()
             return 2
 
-    def add_posts(self, url=None):
+    def add_posts(self, url=None) -> int:
         """ download posts from URL and adds them to users """
         if url is None:
             if self.posts_url is None:
                 print('nie podano ścieżki postów')
-                return
+                return 0
             else:
                 posts = self.get_data_from_url(self.posts_url)
                 self.parse_users_posts(posts)
@@ -152,7 +154,7 @@ class UserPostParser:
             self.remove_repeated_posts()
             return 2
 
-    def remove_repeated_users(self):
+    def remove_repeated_users(self) -> None:
         """ removes users with the same ID, deletes later added users """
         d = defaultdict(list)
         for i in self.users:
@@ -165,7 +167,7 @@ class UserPostParser:
         # [ [self.users.remove(val_to_del) for val_to_del in values[1:]] for key, values in d.items() if len(values) > 1]
         # less visible
 
-    def remove_repeated_posts(self):
+    def remove_repeated_posts(self) -> None:
         """ removes posts with the same ID, deletes later added pots """
         for user in self.users:
             d = defaultdict(list)

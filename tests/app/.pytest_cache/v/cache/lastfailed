@@ -1,0 +1,4 @@
+{
+  "test_ex2_class_pytest.py::TestEx2Class::test_get_data_from_url_with_Timout_except": true,
+  "test_ex2_class_pytest.py::TestEx2Class::test_get_not_unique_title_list_correct[two_posts]": true
+}

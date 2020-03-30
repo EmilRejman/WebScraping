@@ -1,5 +1,7 @@
 ## web srapping
-Simple web scrapping project, URL has data in JSON format inside body tag. Get data and parse it from 2 URLS. All code is unittested, integration tests under creation. Testing with pytest module under creation.
+Simple web scrapping project, URL has data in JSON format inside body tag. Get data and parse it from 2 URLS.
+All code is tested (unit tests) with both unittest and pytest, to pratice both ways. Pytest tests are better optimized, eg with indirect parametrization.
+
 
 made with python 3.7 
 
@@ -9,11 +11,9 @@ made with python 3.7
 
 
 ###### additional info
-*Run "ex2.py" to get results, "test_ex2_class.py" to test the class.*
+*Run "app/ex2.py" to get results, "tests/app/test_ex2_class_unittest.py" for unittest validation, "tests/app/test_ex2_class_pytest.py" for pytest validation.*
 
 *With this version we can add users and posts with urls of the same structures without repetitions (automatic removal of duplicates). It still can be optimized for bigger amounts of data.*
-
-*Testing done with unit tests.*
 
 *Data could also be gatherd with e.g. selenium but its not needed in this simple HTML.*
 
