@@ -1,5 +1,5 @@
 ## web srapping
-Simple web scrapping project, URL has data in JSON format inside body tag. Get data and parse it from 2 URLS.
+Simple web scrapping project, URLs has data in JSON format inside body tag. Get data and parse it from urls for users and urls for posts.
 All code is tested (unit tests) with both unittest and pytest, to pratice both ways. Pytest tests are better optimized, eg with indirect parametrization.
 
 
