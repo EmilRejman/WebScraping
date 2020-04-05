@@ -60,7 +60,7 @@ class TestEx2Class():
         basic_user["address"]["geo"]["lat"] = str(basic_user["address"]["geo"]["lat"])
         basic_user["address"]["geo"]["lng"] = str(basic_user["address"]["geo"]["lng"])
         mocked_get = mocker.patch('app.ex2_class.requests.get')
-        mocked_get.side_effect = ex2_class.requests.exceptions.RequestException
+        mocked_get.side_effect = exception
 
         datalist = basic_class.get_data_from_url('test.url')
 
